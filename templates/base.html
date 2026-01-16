@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+          <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-pO1SJGJp2Y+dtWzjE8LIp6tF6Vahc3F6NWA3tF1q+Eu3L+ZC+7KpGzEYj3O6qZVY+3K5tWgROUxY6HTg7VWbvw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            header {
+                width: 100%;
+                height: 10vh;
+                position: sticky;
+                top: 0;
+                box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+                display: flex;
+                background: red;
+                align-items: center;
+                padding: 1rem;
+                z-index: 9;
+            }
+
+            body{
+                display: flex;
+                flex-direction: column;
+            }
+
+            header nav{
+                width: 20%;
+                gap: 1rem;
+                margin-left: auto;
+                {% comment %} background: green; {% endcomment %}
+                display: flex;
+                justify-content: space-between;
+                {% comment %} align-self: flex-end; {% endcomment %}
+            }
+
+            footer{
+                width: 100%;
+                height: 30vh;
+                background: red;
+                box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+                align-self: flex-end;
+                margin-top: 2rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+               
+            }
+
+            
+
+            .container{
+                width: 100%;
+                {% comment %} height: 100vh; {% endcomment %}
+                padding: 8rem 1rem 0 1rem;
+                display: flex;
+                flex-direction: column;
+                margin-bottom: auto;
+                {% comment %} background: yellow; {% endcomment %}
+                height: auto;
+                {% comment %} flex: 1; {% endcomment %}
+                
+            }
+
+            nav a{
+                color: white;
+                text-decoration: none;
+                cursor: pointer;
+                text-transform: uppercase;
+                transition: 1s ease;
+            }
+
+            nav a:hover{
+                color: black;
+            }
+
+            body{
+                
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+            }
+
+             header .a1{
+                color: white;
+                text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+                font-size: 3rem;
+                text-decoration: none;
+            } 
+           
+            .link2{
+                display: none;
+                visibility: none;
+                width: 60%;
+                height: 100vh;
+                position: fixed;transition: 1s ease;
+                top: 0;
+                align-self: flex-end;
+                z-index: 10;
+                box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+                background: red;
+                right: 0;
+                opacity: .8;
+                {% comment %} display: flex; {% endcomment %}
+                flex-direction: column;
+                padding: 1rem;
+                justify-content: center;
+                align-items: flex-end;
+                {% comment %} transform: translatex(100%); {% endcomment %}
+                
+            }
+
+            .wack{
+                 width: 100%;
+                display: flex;
+                 flex-direction: column;
+                 align-items: flex-end;
+                 height: 70%;
+                 gap: 3rem;
+
+            }
+            
+            .link2 h1{
+               margin-bottom: auto;
+               color: white;
+               cursor: pointer;
+            }
+            header .ham{
+                display: none;
+            }
+
+                ::-webkit-scrollbar{
+                    display: none;
+                }
+             @media (min-width: 1px) and (max-width: 1200px){
+                header nav{
+                    display: none;
+                }
+
+                header .a1{
+                    font-size: 1.5rem;
+                }
+
+                header .ham{
+                    display: flex;
+                    margin-left: auto;
+                    color: white;
+                    cursor: pointer;
+                    {% comment %} font-size: 3rem; {% endcomment %}
+                }
+
+                footer p{
+                font-size: .6rem;
+            }
+
+            .link3{
+                animation: se 0.5s 1 linear;
+                {% comment %} transition: 1s ease; {% endcomment %}
+            }
+
+            @keyframes se{
+                from{
+                    transform: translatex(20%)
+                }
+                 to{
+                    transform: translatex(-2%)
+                }
+            }
+    }
+
+     @media (min-width: 1201px) and (max-width: 1700px) { 
+
+       nav a{
+        font-size: .8rem;
+       }
+
+       header .a1{
+        font-size: 2rem;
+       }
+
+       footer p{
+        font-size: .7rem;
+       }
+    }
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href={% url 'home'%} class='a1'>StellynTech</a>
+        <nav>
+            <a href={% url 'home'%}>Home</a>
+            <a href={% url 'projects'%}>Projects</a>
+            <a href={% url 'contact'%}>Contact</a>
+            <a href={% url 'about'%}>About</a>
+                
+        </nav>
+
+        <h1 class='ham'>≡</h1>
+       
+        </header>
+
+        <div class='container'>
+            <nav class='link2'>
+                 <h1 class='cancel'>✕</h1>
+             <div class='wack'>  
+            <a href={% url 'home'%}>Home</a>
+            <a href={% url 'projects'%}>Projects</a>
+            <a href={% url 'contact'%}>Contact</a>
+            <a href={% url 'about'%}>About</a>
+             </div>
+            </nav>
+        {% block content %}
+       
+        {% endblock %}
+         </div>
+
+        <footer>
+            <p>©2026 copyright, StellynTech limited.</p>
+        </footer>
+
+        <script>
+            let ham = document.querySelector('.ham')
+            let cancel = document.querySelector('.cancel')
+            let link = document.querySelector('.link2')
+          function menu(){
+            if (window.innerWidth <= 1200){
+                ham.style.display='flex'
+                ham.style.cursor='pointer'
+            ham.addEventListener('click', ()=>{
+                link.style.display = 'flex'
+                ham.style.display = 'none'
+                link.classList.add('link3')
+            })
+
+            cancel.addEventListener('click', () =>{
+                //link.style.transform = 'translatex(100%)'
+                link.style.display = 'none'
+                ham.style.display = 'flex'
+
+
+            })
+            }else if (window.innerWidth >= 1200){
+                ham.style.display = 'none'
+            }
+            }
+
+            menu()
+            window.addEventListener('resize', menu)
+        </script>
+    </body>
+</html>

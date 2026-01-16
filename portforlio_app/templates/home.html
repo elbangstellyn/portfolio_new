@@ -1,0 +1,758 @@
+{% extends 'base.html'%}
+
+{% block content%}
+<style>
+    #slide{
+        width: 100%;
+        height: 12vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #slide .anime h1{
+        font-size: 3rem;
+        color: white;
+      
+        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+    }
+
+    @keyframes racks{
+        0%{
+             border-radius:  50% 50% 50% 50%;
+
+        }
+        25%{
+            {% comment %} opacity: 0;
+            scale: 0; {% endcomment %}
+            border-radius: .5rem 50% 50% .5rem;
+        }
+        35%{
+            {% comment %} opacity: 1;
+            scale: 1; {% endcomment %}
+            {% comment %} color: black; {% endcomment %}
+             border-radius: 50% 50% 50% .5rem;
+        }45%{
+            {% comment %} opacity: 0;
+            scale: 0; {% endcomment %}
+             border-radius: 50% 50% 0 0;
+        }55%{
+            {% comment %} opacity: 1;
+            scale: 1; {% endcomment %}
+            {% comment %} color: #FFF7ED; {% endcomment %}
+             border-radius: 0 0 50% 50%;
+        }65%{
+            {% comment %} opacity: 1;
+            scale: 1; {% endcomment %}
+            {% comment %} color: #FFF7ED; {% endcomment %}
+             border-radius: 5rem 0 2rem 2rem;
+        }75%{
+            {% comment %} opacity: 1;
+            scale: 1; {% endcomment %}
+            {% comment %} color: #FFF7ED; {% endcomment %}
+             border-radius: 0 50% 2rem 2rem;
+        }85%{
+            {% comment %} opacity: 1;
+            scale: 1; {% endcomment %}
+            {% comment %} color: #FFF7ED; {% endcomment %}
+             border-radius: 50% 0 2rem 2rem;
+        }95%{
+            {% comment %} opacity: 1;
+            scale: 1; {% endcomment %}
+            {% comment %} color: #FFF7ED; {% endcomment %}
+             border-radius: 50% 0 50% 2rem;
+        }100%{
+            {% comment %} opacity: 1;
+            scale: 1; {% endcomment %}
+            {% comment %} color: #FFF7ED; {% endcomment %}
+             border-radius: 4rem 0 2rem 50%;
+        }
+    }
+
+    #slide .anime{
+        width: 30%;
+        background: red;
+        height: 100%;
+        padding: 1rem;
+        border-radius: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+    }
+
+    .wrapper{
+        width: 100%;
+        height:75vh;
+        display: flex;
+
+    }
+
+    .left{
+        width: 60%;
+        padding: 1rem;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 1rem;
+        overflow: hidden;
+
+    }
+
+     .right{
+        width: 40%;
+        padding: 1rem;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        {% comment %} background: green; {% endcomment %}
+           
+    }
+
+    .right img {
+        width: 50%;
+        height: 50%;
+        border-radius: 50%;
+        box-shadow: 0 4px 14px rgba(255, 0, 0, 0.5);
+        border: 4px solid red;
+        object-fit: center;
+        animation: racks 20s infinite linear; 
+    }
+
+    .left h1,p{
+        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    .left h1{
+        font-size: 3rem;
+    }
+    .left p{
+        font-size: 1.3rem;
+    }
+
+    .left p{
+        text-align: center;
+    }
+
+    .staflo{
+        width: 100%;
+        height: auto;
+        display: flex;
+        {% comment %} justify-content: space-between; {% endcomment %}
+        align-items: center;
+        gap: 4rem;
+        flex-wrap: wrap;
+    }
+
+    .stack{
+        width: 30%;
+        height: 30vh;
+        padding: 1rem;
+        border-radius: .5rem;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        margin-top: 1rem;
+        gap: 2rem;
+        transition: 1s ease;
+    }
+
+    .stack:hover{
+        {% comment %} transform: scale(1.1); {% endcomment %}
+         box-shadow: 0 4px 14px rgba(250, 4, 4, 0.5);
+    }
+
+    .stack img{
+        width: 100%;
+        height: 75%;
+        border-radius: .5rem;
+        border: 2px solid red;
+        object-fit: cover;
+    }
+    .proj{
+        width: 100%;
+        height: 75vh;
+        display: flex;
+        {% comment %} justify-content: space-between; {% endcomment %}
+        align-items: center;
+        gap: 4rem;
+        margin-top: 1rem;
+        {% comment %} background: green; {% endcomment %}
+    }
+
+    .wrap{
+        width: 30%;
+        height: 80%;
+        padding: 1rem;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        border-radius: .5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+
+
+    }
+
+    .wrap img{
+        width: 100%;
+        height: 50%;
+        border: 2px solid red;
+        border-radius: .5rem;
+        object-fit: center;
+    }
+
+    
+
+    .wrap a:hover{
+        transform: translatey(-8px);
+    }
+
+    .proj h1{
+        width: 100%;
+        text-align: center;
+    }
+
+    .move a{
+        width: 20%;
+        height: 50%;
+        display: flex;
+        text-decoration: none;
+        justify-content: center;
+        align-items: center;
+        border-radius: .5rem;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        background: red;
+        color: white;
+        transition: 1s ease;
+        cursor: pointer;
+        font-size: .7rem;
+
+    }
+
+     .wrap a{
+        width: 100%;
+        height: 5vh;
+        display: flex;
+        text-decoration: none;
+        justify-content: center;
+        align-items: center;
+        border-radius: .5rem;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        background: red;
+        color: white;
+        transition: 1s ease;
+        cursor: pointer;
+        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+
+    }
+
+
+    .move a:hover{
+        transform: scale(1.1);
+    }
+
+    .move{
+        width: 100%;
+        height: 6vh;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    .round{
+        width: 100%;
+        height: 20vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        {% comment %} background: yellow; {% endcomment %}
+         margin-top: 3rem;
+        padding-top: 4rem;
+    }
+
+    .head{
+        width: 30%;
+        height: 35%;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        background: red;
+        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        border-radius: 1rem;
+         display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        padding: 1rem;
+        
+    }
+
+    .cover{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .wrap h1{
+        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+    }
+
+    .stl{
+        width: 30%;
+        height: 35%;
+        border-radius: 1rem;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        background: red;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .ril{
+        width: 100%;
+        height: 20vh;
+        display: flex;
+        justify-content: center;
+        margin-top: 3rem;
+        padding-top: 4rem;
+        {% comment %} background: yellow; {% endcomment %}
+    }
+
+    .cv{
+        width:100%;
+        height: 20vh;
+        padding: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        {% comment %} background: yellow; {% endcomment %}
+    }
+
+    .cv a{
+        width: 10%;
+        height: 40%;
+        border-radius: .5rem;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        background: red;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        font-size: .7rem;
+        padding: 1rem;
+    }
+
+    @media  (max-width: 768px){
+        .wrapper{
+            flex-direction: column;
+            height: auto;
+        }
+
+        .left{
+            width: 100%;
+            {% comment %} background: yellow; {% endcomment %}
+            height: auto;
+            order: 2;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .left h1{
+            font-size: 1.5rem;
+             overflow-wrap: break-word;
+        word-wrap: break-word;
+
+        }
+
+        .left p{
+            font-size: .6rem;
+             overflow-wrap: break-word;
+        word-wrap: break-word;
+        }
+
+        .right{
+            width: 100%;
+            order: 1;
+            height: auto;
+        }
+
+        #slide .anime h1{
+            font-size: 1rem;
+        }
+
+        #slide .anime{
+            width: 50%;
+        }
+
+        {% comment %} .head{
+            width: 50%;
+            height: 6vh;
+            font-size: 1rem;
+        } {% endcomment %}
+
+
+
+    .round{
+        width: 100%;
+        height: 5vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+        {% comment %} background: yellow; {% endcomment %}
+    }
+
+    .head{
+        width: 50%;
+        height: 100%;
+        padding: 1.2rem;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        background: red;
+        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        border-radius: 1rem;
+         display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        margin-bottom: 3rem;
+        font-size: 1rem;
+
+        
+    }
+
+        {% comment %} .round{
+            padding: 1rem;
+            height: 6vh;
+        } {% endcomment %}
+
+        .proj{
+            flex-direction: column;
+            height: auto;
+        }
+
+        .wrap{
+            width: 100%;
+            height: auto;
+            padding: 1rem;
+            gap: 1rem;
+        }
+
+        .move{
+            margin-top: 2rem;
+        }
+
+        .stl{
+            width: 50%;
+            font-size: 1rem;
+        }
+
+        .staflo{
+            flex-direction: column;
+        }
+
+        .stack{
+            width: 100%;
+        }
+
+        .cv a{
+            width: 50%;
+          
+        } 
+
+         .wrap h1{
+            font-size: 1.2rem;
+
+        }
+
+        .wrap h3{
+            font-size: .7rem;
+
+        }
+
+        .wrap p{
+            font-size: .6rem;
+
+        }
+
+        .stack h1{
+            font-size: 1.2rem;
+        }
+
+    }
+
+
+    @media (min-width: 1201px) and (max-width: 1700px) { 
+
+        .left h1{
+            font-size: 1.5rem;
+             overflow-wrap: break-word;
+        word-wrap: break-word;
+
+        }
+
+        .left p{
+            font-size: 1rem;
+             overflow-wrap: break-word;
+        word-wrap: break-word;
+        }
+
+        #slide .anime h1{
+            font-size: 1rem;
+        }
+
+        #slide .anime{
+            width: 30%;
+        }
+
+        .head{
+            width: 30%;
+            font-size: 1rem;
+            {% comment %} height: 100%; {% endcomment %}
+        }
+
+        {% comment %} .round{
+            padding: 1rem;
+            height: 6vh;
+        } {% endcomment %}
+
+        
+        .wrap{
+            width: 100%;
+            height: auto;
+            padding: 1rem;
+            gap: 1rem;
+        }
+
+         .wrap img{
+        width: 100%;
+        height: 30vh;
+        border: 2px solid red;
+        border-radius: .5rem;
+        object-fit: center;
+    }
+
+        .move{
+            margin-top: 2rem;
+        }
+
+        .stl{
+            width: 30%;
+            font-size: 1rem;
+        }
+
+         .staflo,#v{
+            display: flex;
+            flex-direction: row;
+        } 
+
+        {% comment %} .stack{
+            width: 100%;
+        } {% endcomment %}
+
+        .cv a{
+            width: 30%;
+        }
+
+         .wrap h1{
+            font-size: 1.2rem;
+
+        }
+
+        .wrap h3{
+            font-size: .7rem;
+
+        }
+
+        .wrap p{
+            font-size: .6rem;
+
+        }
+
+        .stack h1{
+            font-size: 1.2rem;
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 1200px) { 
+
+       .wrapper{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+       }
+
+        .left{
+            width:65%;
+            order: 2;
+            justify-content: flex-start;
+             height: auto;
+        }
+
+        .right{
+            width:65%;
+            height: auto;
+            order: 1;
+           
+           
+        } 
+
+        .wrapper h1{
+            justify-self: flex-start;
+        }
+
+        .left h1{
+            font-size: 1.5rem;
+             overflow-wrap: break-word;
+        word-wrap: break-word;
+
+        }
+
+        .left p{
+            font-size: .6rem;
+             overflow-wrap: break-word;
+        word-wrap: break-word;
+        }
+
+        #slide .anime h1{
+            font-size: 1rem;
+        }
+
+        #slide .anime{
+            width: 30%;
+        }
+
+        .head{
+            width: 30%;
+            font-size: 1rem;
+            {% comment %} height: 100%; {% endcomment %}
+        }
+
+        {% comment %} .round{
+            padding: 1rem;
+            height: 6vh;
+        } {% endcomment %}
+
+        .proj{
+            flex-direction: column;
+            height: auto;
+            {% comment %} background: red; {% endcomment %}
+        }
+        .wrap{
+            width: 65%;
+            height: auto;
+            padding: 1rem;
+            gap: 1rem;
+        }
+
+         .wrap img{
+        width: 100%;
+        height: 30vh;
+        border: 2px solid red;
+        border-radius: .5rem;
+        object-fit: center;
+    }
+
+        .move{
+            margin-top: 2rem;
+        }
+
+        .stl{
+            width: 30%;
+            font-size: 1rem;
+        }
+
+         .staflo,#v{
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        } 
+
+         .stack{
+            width: 65%;
+        } 
+
+        .cv a{
+            width: 30%;
+        }
+
+         .wrap h1{
+            font-size: 1.2rem;
+
+        }
+
+        .wrap h3{
+            font-size: .7rem;
+
+        }
+
+        .wrap p{
+            font-size: .6rem;
+
+        }
+
+        .stack h1{
+            font-size: 1.2rem;
+        }
+    }
+
+    
+
+</style>
+
+<div id='slide'><div class='anime'><h1>MY PORTFOLIO</h1></div></div>
+
+<div class='wrapper'><div class='left'><h1>{{data.title}}</h1><p>{{data.body}}</p></div><div class='right'>{% if data.image %}<img src={{data.image.url}}/>{%endif%}</div></div>
+
+<div class='round'><h1 class='head'>Latest Projects</h1></div>
+<div class='proj'>{% for projs in proj %}<div class='wrap'>{% if projs.image%}<img src={{projs.image.url}}/>{%endif%}<h1>{{projs.title}}</h1><h3>Date - Time:</h3><p>{{projs.date}}</p><div class='cover'><a href={% url 'detail' projs.pk%}>view</a></div></div>{%empty%}<h1>No available project ⛔️</h1>{% endfor %}</div>
+{% if count > 0 %}<div class='move'><a href={% url 'projects'%}>see more</a></div>{%endif%}
+
+<div class='ril'>
+<h1 class='stl'>Stacks</h1>
+</div>
+<div class='staflo' id='v'>
+    {% for stacks in stack%}
+    <div class='stack'>
+        {% if stacks.image %}
+        <img src={{stacks.image.url}} />
+        {% endif%}
+        <h1>{{stacks.name}}</h1>
+    </div>
+    {%empty%}
+    <h1>stack info not available</h1>
+    {%endfor%}
+</div>
+
+<div class='ril'>
+<h1 class='stl'>Frameworks</h1>
+</div>
+<div class='staflo'>
+    {% for frames in frame%}
+    <div class='stack'>
+        {% if frames.image %}
+        <img src={{frames.image.url}} />
+        {% endif%}
+        <h1>{{frames.name}}</h1>
+    </div>
+    {%empty%}
+    <h1>framework info not available</h1>
+    {%endfor%}
+</div>
+
+<div class='cv'>
+    {% if cv.cv %}
+    <a href={% url 'download' cv.pk%}>Download {{cv.name}}</a>
+    {% endif %}
+</div>
+{% endblock%}

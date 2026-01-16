@@ -1,0 +1,86 @@
+{% extends 'base.html'%}
+{% block content %}
+
+<style>
+    .slap{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        
+    }
+
+    .about{
+        width: 60%;
+        height: auto;
+        padding: 1rem;
+        border-radius: .5rem;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        gap: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .slap img{
+        width: 100%;
+        height: 30vh;
+        border-radius: .5rem;
+        border: 2px solid red;
+        object-fit: center;
+    }
+
+    .slap p,h1{
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+ 
+    #ab{
+        width: 30%;
+        height: 10vh;
+        padding: 1rem;
+        border-radius: 2rem;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        background: red;
+        color: white;
+        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    @media (max-width: 768px){
+        .about{
+            width: 100%;
+        }
+        #ab{
+            width: 50%;
+        }
+        .about p{
+            font-size: .6rem;
+        }
+
+        .about h1{
+            font-size: 1rem;
+        }
+    }
+</style>
+<div class='slap'>
+    <h1 id='ab'>About</h1>
+    {% for abouts in about %}
+    <div class='about'>
+        {% if abouts.image%}
+        <img src={{abouts.image.url}}/>
+        {% endif %}
+        <h1>{{abouts.title}}</h1>
+        <p>{{abouts.body}}</p>
+    </div>
+    {% empty %}
+    <h1> no about information</h1>
+    {% endfor %}
+</div>
+{% endblock %}

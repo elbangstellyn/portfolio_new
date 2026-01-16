@@ -1,0 +1,300 @@
+{% extends 'base.html'%}
+{% block content %}
+<style>
+    .swipe{
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .swipe img{
+        width: 70%;
+        height: 70%;
+        object-fit: center;
+        border-radius: .5rem;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+    }
+
+    .swipe h1,p{
+        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+    }
+
+    .swipe p{
+        text-align: center;
+        max-width: 50%;
+        height: auto;
+        {% comment %} background: red; {% endcomment %}
+        padding: 1rem;
+        overflow-wrap: break-word;
+        word-wrap: break-word; 
+    }
+
+
+
+    .wind{
+        width: 100%
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: red;
+        align-items: center;
+        color: white;
+         text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+         border-radius: .5rem .5rem 0 0;
+         box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+         margin-bottom: 1rem;
+    }
+
+    .comment{
+        width: 70%;
+        height: auto;
+        margin: 3.5rem 0;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        border-radius: .5rem;
+        padding: 0 0 1rem 0;
+    } 
+    .comment h1,h3,p{
+        padding: 0 1rem;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+
+
+    .form-holder {
+
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    form{
+        width: 70%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        {% comment %} justify-content: center;
+        align-items: center; {% endcomment %}
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        border-radius: .5rem;
+        padding: 0 0 1rem 0;
+
+    }
+
+    form p{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+
+    }
+
+    form p input,textarea{
+        border-radius: .5rem;
+        border: 2px solid red;
+        padding: 1rem;
+    }
+
+     {% comment %} form p input,textarea:focus{
+        border: 2px solid darkred;
+     } {% endcomment %}
+
+    form h1{
+        width: 100%
+        height: 5vh;
+        color: white;
+        border-radius: .5rem .5rem 0 0;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        background: red;
+         text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+         display: flex;
+         justify-content: center;
+    }
+
+    .blow{
+         width: 100%
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        {% comment %} background: red; {% endcomment %}
+        align-items: center;
+
+    }
+
+    form button{
+        width: 70%;
+        padding: 1rem;
+        color: white;
+        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        background: red;
+         box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+         border-radius: .5rem;
+         border: none;
+         cursor: pointer;
+
+
+    }
+
+    .btn-hold{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .option{
+        display: flex;
+        width: 50%;
+        justify-content: space-between;
+        margin: 3rem 0;
+        border: 2px solid red;
+        border-radius: 1rem;
+    }
+
+    .option > *{
+        text-decoration: none;
+        color: black;
+    }
+
+    .option a,.a2{
+         padding: 1rem;
+         width: 50%;
+         height: 100%;
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+    }
+
+    .option .a2{
+        border-left: 2px solid red;
+    }
+
+    .option a:hover{
+        background: red;
+        border-radius: .6rem 0 0 .6rem; 
+        color: white;
+    }
+
+    .option .a2:hover{
+        background: red;
+        border-radius: 0 .6rem .6rem 0; 
+        color: white;
+    }
+
+    .swipe a{
+        width: 30%;
+        height: auto;
+        padding: .6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        color: white;
+        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        background: red;
+        border-radius: .5rem;
+        margin: 2rem 0;
+        gap: .5rem;
+    }
+
+     @media (max-width: 768px){
+        .swipe img{
+            width: 100%;
+            height: auto;
+        }
+
+        .swipe p{
+            max-width: 100%;
+        }
+
+        .swipe a{
+            font-size: .6rem;
+        }
+
+        .comment{
+            width: 100%;
+        }
+
+        form{
+            width: 100%;
+        }
+
+        .option{
+            width: 50%;
+        }
+
+        .comment h3,p{
+            font-size: .6rem;
+        }
+
+        .comment h1{
+            font-size: 1.2rem;
+        }
+
+        form h1{
+            font-size: 1.2rem;
+        }
+
+        .option a{
+            font-size: .6rem;
+        }
+
+        .option > *{
+            font-size: .6rem;
+        }
+
+        .option{
+            width: 60%;
+        }
+    }
+</style>
+<div class='swipe'><img src={{one_view.image.url}}/>
+<h1>{{one_view.title}}</h1>
+<p>{{one_view.body}}</p>
+{% if one_view.link %}
+<a href={{one_view.link}} target='_blank'>    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" width="24" height="24" fill="currentColor">
+  <path d="M165.9 397.4c0 2-2.3 3.7-5.2 3.7-3.3.3-5.6-1.3-5.6-3.7 0-2 2.3-3.7 5.2-3.7 3-.3 5.6 1.3 5.6 3.7zM248 8C111 8 0 119 0 256c0 110.5 69.8 204.8 166.5 238.2 12.2 2.2 16.7-5.2 16.7-11.8 0-5.9-.2-25.6-.2-46.4-67.7 14.8-82-29.2-82-29.2-11.1-28.2-27.1-35.7-27.1-35.7-22.2-15.2 1.7-14.9 1.7-14.9 24.6 1.7 37.5 25.2 37.5 25.2 21.9 37.5 57.5 26.7 71.5 20.4 2.2-15.9 8.6-26.7 15.6-32.8-54-6.1-110.8-27-110.8-120.2 0-26.6 9.5-48.4 25.1-65.4-2.5-6.2-10.9-31.1 2.4-64.9 0 0 20.5-6.6 67.1 25 19.5-5.4 40.4-8.1 61.2-8.2 20.8.1 41.7 2.8 61.2 8.2 46.6-31.6 67.1-25 67.1-25 13.3 33.8 4.9 58.7 2.4 64.9 15.6 17 25.1 38.8 25.1 65.4 0 93.4-56.9 114-111 120 8.9 7.7 16.8 22.8 16.8 46 0 33.2-.3 59.9-.3 68.1 0 6.6 4.4 14.2 16.8 11.8C426.2 460.8 496 366.5 496 256 496 119 385 8 248 8z"/>
+</svg> Github</a>
+{% endif %}
+</div>
+
+<div class='blow'>
+<div class='comment'>
+    <h1 class='wind'>Comments</h1>
+    {% for comments in comment%}
+    <h3>{{comments.name}}</h3>
+    <p>{{comments.comment}}</p>
+    <p>{{comments.date}}</p>
+    {%empty%}
+    <h1>no comment</h1>
+    {%endfor%}
+</div>
+</div>
+<div class='form-holder'>
+<form method='post' action={% url 'detail' one_view.pk%}>{% csrf_token%}
+    <h1> Add Comment</h1>
+    {{form.as_p}}
+    <div class='btn-hold'>
+    <button type='submit'>Comment</button>
+    </div>
+</form>
+</div>
+
+<div class='option'>
+    <a href={% url 'home'%}>Home</a>
+    <a href={% url 'projects'%} class='a2'>More Projects</a>
+</div>
+{% endblock %}

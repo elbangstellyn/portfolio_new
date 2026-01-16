@@ -1,0 +1,120 @@
+{% extends 'base.html'%}
+{% block content%}
+<style>
+    .hold{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5rem;
+    }
+
+    .item-hold{
+        width: 30%;
+        height: 70vh;
+        border-radius: .5rem;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .item-hold img{
+        width: 100%;
+        height: 30vh;
+        border: 2px solid red;
+        object-fit: center;
+        border-radius: .5rem;
+    }
+
+     .item-hold a{
+        width: 100%;
+        height: 5vh;
+        border-radius: .5rem;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        background: red;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        justify-content: center;
+        color: white;
+        transition: 1s ease;
+     }
+
+
+    .item-hold a:hover{
+        transform: translatey(-8px);
+    }
+
+     @media (max-width: 768px){
+        .hold{
+            flex-direction: column;
+            height: auto;
+        }
+
+        .item-hold{
+            width: 100%;
+            height: auto;
+            padding: 1rem;
+            gap: 1rem;
+        }
+
+        .item-hold h1{
+            font-size: 1.2rem;
+
+        }
+
+        .item-hold h3{
+            font-size: .7rem;
+
+        }
+
+        .item-hold p{
+            font-size: .6rem;
+
+        }
+    }
+
+    @media (min-width: 1201px) and (max-width: 1700px) { 
+
+       .item-hold{
+        width: 27%;
+       }
+
+       .hold{
+        gap: 7rem;
+       }
+    }
+
+    @media (min-width: 769px) and (max-width: 1200px) { 
+        .item-hold{
+            width: 65%;
+        }
+
+        .hold{
+            gap: 2rem;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+</style>
+<div class='hold'>
+    {% for pros in pro %}
+    <div class='item-hold'>
+    {% if pros.image %}
+    <img src={{pros.image.url}}/>
+    {% endif %}
+    <h1>{{pros.title}}</h1>
+    <h3>Date - Time:</h3>
+    <p>{{pros.date}}</p>
+    <a href={% url 'detail' pros.pk%}>view</a>
+    </div>
+    {%empty%}
+    <h1>no available project</h1>
+    {%endfor%}
+</div>
+{% endblock%}
