@@ -12,7 +12,7 @@ venv/
 .env/
 
 # Static files
-staticfiles/
+
 
 # OS files
 .DS_Store
