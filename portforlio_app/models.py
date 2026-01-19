@@ -1,25 +1,40 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
+
 
 # Create your models here.
 
+
 class PortforlioDetail(models.Model):
     title = models.CharField(max_length=150)
-    body = models.TextField(blank=False,null=False)
-    image = models.ImageField(upload_to='port_image/')
-
-    def __str__(self):
-        return self.title
-    
+    body = models.TextField()
+    image = CloudinaryField('image')
 
 class Projects(models.Model):
     title = models.CharField(max_length=150)
     body = models.TextField()
-    image = models.ImageField(upload_to='projects/')
+    image = CloudinaryField('image')
     link = models.CharField(max_length=300, blank=True, null=True)
-    date =  models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return self.title
+class Stack(models.Model):
+    name = models.CharField(max_length=150)
+    image = CloudinaryField('image')
+
+class Framework(models.Model):
+    name = models.CharField(max_length=150)
+    image = CloudinaryField('image')
+
+class About(models.Model):
+    title = models.CharField(max_length=150)
+    image = CloudinaryField('image')
+    body = models.TextField()
+
+class Cv(models.Model):
+    name = models.CharField(max_length=150)
+    cv = CloudinaryField('raw')
+
+
     
 class Comment(models.Model):
     name = models.CharField(max_length=150)
@@ -29,31 +44,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.name
-    
-class Stack(models.Model):
-    name = models.CharField(max_length=150)
-    image = models.ImageField(upload_to='stack/')
-
-    def __str__(self):
-        return self.name
-
-class Framework(models.Model):
-    name = models.CharField(max_length=150)
-    image = models.ImageField(upload_to='framework/') 
-
-    def __str__(self):
-        return self.name
-    
-class Cv(models.Model):
-    name = models.CharField(max_length=150)
-    cv = models.FileField(upload_to='documents/')
-    def __str__(self):
-        return self.name
-    
-class About(models.Model):
-    title = models.CharField(max_length=150)
-    image = models.ImageField(upload_to='about/')
-    body = models.TextField()
-
-    def __str__(self):
-        return self.title

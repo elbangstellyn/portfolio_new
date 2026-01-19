@@ -30,7 +30,7 @@
         height: 30vh;
         border-radius: .5rem;
         border: 2px solid red;
-        object-fit: center;
+        object-fit: cover;
     }
 
     .slap p,h1{
@@ -74,7 +74,7 @@
     {% for abouts in about %}
     <div class='about'>
         {% if abouts.image%}
-        <img src={{abouts.image.url}}/>
+        <img src="{{abouts.image.url}}"/>
         {% endif %}
         <h1>{{abouts.title}}</h1>
         <p>{{abouts.body}}</p>

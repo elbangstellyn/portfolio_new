@@ -553,6 +553,7 @@
          .staflo,#v{
             display: flex;
             flex-direction: row;
+            gap: 7rem;
         } 
 
         {% comment %} .stack{
@@ -580,6 +581,10 @@
 
         .stack h1{
             font-size: 1.2rem;
+        }
+
+        .stack{
+            width: 27%;
         }
     }
 
@@ -712,10 +717,10 @@
 
 <div id='slide'><div class='anime'><h1>MY PORTFOLIO</h1></div></div>
 
-<div class='wrapper'><div class='left'><h1>{{data.title}}</h1><p>{{data.body}}</p></div><div class='right'>{% if data.image %}<img src={{data.image.url}}/>{%endif%}</div></div>
+<div class='wrapper'><div class='left'><h1>{{data.title}}</h1><p>{{data.body}}</p></div><div class='right'>{% if data.image %}<img src="{{data.image.url}}"/>{%endif%}</div></div>
 
 <div class='round'><h1 class='head'>Latest Projects</h1></div>
-<div class='proj'>{% for projs in proj %}<div class='wrap'>{% if projs.image%}<img src={{projs.image.url}}/>{%endif%}<h1>{{projs.title}}</h1><h3>Date - Time:</h3><p>{{projs.date}}</p><div class='cover'><a href={% url 'detail' projs.pk%}>view</a></div></div>{%empty%}<h1>No available project ⛔️</h1>{% endfor %}</div>
+<div class='proj'>{% for projs in proj %}<div class='wrap'>{% if projs.image%}<img src="{{projs.image.url}}"/>{%endif%}<h1>{{projs.title}}</h1><h3>Date - Time:</h3><p>{{projs.date}}</p><div class='cover'><a href={% url 'detail' projs.pk%}>view</a></div></div>{%empty%}<h1>No available project ⛔️</h1>{% endfor %}</div>
 {% if count > 0 %}<div class='move'><a href={% url 'projects'%}>see more</a></div>{%endif%}
 
 <div class='ril'>
@@ -725,7 +730,7 @@
     {% for stacks in stack%}
     <div class='stack'>
         {% if stacks.image %}
-        <img src={{stacks.image.url}} />
+        <img src="{{stacks.image.url}}" />
         {% endif%}
         <h1>{{stacks.name}}</h1>
     </div>
@@ -741,7 +746,7 @@
     {% for frames in frame%}
     <div class='stack'>
         {% if frames.image %}
-        <img src={{frames.image.url}} />
+        <img src="{{frames.image.url}}" />
         {% endif%}
         <h1>{{frames.name}}</h1>
     </div>

@@ -3,7 +3,7 @@
 <style>
     .swipe{
         width: 100%;
-        height: 100vh;
+        height: auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -13,10 +13,11 @@
 
     .swipe img{
         width: 70%;
-        height: 70%;
-        object-fit: center;
+        height: 70vh;
+        object-fit: cover;
         border-radius: .5rem;
         box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        margin-bottom: 1rem;
     }
 
     .swipe h1,p{
@@ -259,9 +260,13 @@
         .option{
             width: 60%;
         }
+
+        .swipe h1{
+            text-align: center;
+        }
     }
 </style>
-<div class='swipe'><img src={{one_view.image.url}}/>
+<div class='swipe'><img src="{{one_view.image.url}}"/>
 <h1>{{one_view.title}}</h1>
 <p>{{one_view.body}}</p>
 {% if one_view.link %}
