@@ -1,80 +1,167 @@
-{% extends 'base.html'%}
+
+{% extends 'base.html' %}
 {% block content %}
 
 <style>
-    .slap{
+    /* ===== ABOUT PAGE MODERN REDESIGN ===== */
+    /* Preserving all original classes and Django template syntax */
+    
+    .slap {
         width: 100%;
         height: auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 3rem;
-        
+        gap: 2.5rem;
+        padding: 1rem 0 2rem;
     }
 
-    .about{
-        width: 60%;
+    .about {
+        width: 65%;
+        max-width: 850px;
         height: auto;
-        padding: 1rem;
-        border-radius: .5rem;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        padding: 1.8rem;
+        border-radius: 1.5rem;
+        background: #ffffff;
+        box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
         gap: 1rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .about:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 28px 40px -15px rgba(220, 38, 38, 0.15);
     }
 
-    .slap img{
+    .slap img {
         width: 100%;
-        height: 30vh;
-        border-radius: .5rem;
-        border: 2px solid red;
+        height: 280px;
+        border-radius: 1rem;
+        border: 2px solid #dc2626;
         object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    .about:hover img {
+        transform: scale(1.01);
     }
 
-    .slap p,h1{
+    .slap p,
+    .slap h1 {
         overflow-wrap: break-word;
         word-wrap: break-word;
     }
- 
-    #ab{
-        width: 30%;
-        height: 10vh;
-        padding: 1rem;
-        border-radius: 2rem;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        background: red;
+
+    .slap h1:not(#ab) {
+        font-size: 1.6rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #1e293b, #b91c1c);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        text-shadow: none;
+        margin: 0.25rem 0;
+    }
+
+    .slap p {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        color: #334155;
+        text-shadow: none;
+        margin: 0;
+    }
+
+    /* About badge / header */
+    #ab {
+        width: auto;
+        min-width: 160px;
+        padding: 0.7rem 2rem;
+        border-radius: 3rem;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
         color: white;
-        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        text-shadow: none;
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: 1.6rem;
+        font-weight: 600;
+        letter-spacing: -0.3px;
+        margin-bottom: 0.5rem;
     }
 
+    /* Empty state message */
+    .slap > h1:first-of-type:not(#ab) {
+        text-align: center;
+        color: #94a3b8;
+        font-size: 1.3rem;
+        padding: 2rem;
+    }
 
-    @media (max-width: 768px){
-        .about{
-            width: 100%;
+    /* ===== RESPONSIVE BREAKPOINTS ===== */
+    @media (max-width: 768px) {
+        .about {
+            width: 92%;
+            padding: 1.2rem;
         }
-        #ab{
-            width: 50%;
+        #ab {
+            width: auto;
+            min-width: 130px;
+            font-size: 1.3rem;
+            padding: 0.5rem 1.5rem;
         }
-        .about p{
-            font-size: .6rem;
+        .slap p {
+            font-size: 0.85rem;
+            line-height: 1.5;
         }
+        .slap h1:not(#ab) {
+            font-size: 1.3rem;
+        }
+        .slap img {
+            height: 200px;
+        }
+        .slap {
+            gap: 1.8rem;
+        }
+    }
 
-        .about h1{
+    @media (min-width: 769px) and (max-width: 1200px) {
+        .about {
+            width: 80%;
+            padding: 1.5rem;
+        }
+        #ab {
+            font-size: 1.5rem;
+            min-width: 150px;
+        }
+        .slap p {
+            font-size: 0.95rem;
+        }
+        .slap img {
+            height: 250px;
+        }
+    }
+
+    @media (min-width: 1201px) and (max-width: 1700px) {
+        .about {
+            width: 55%;
+            max-width: 800px;
+        }
+        .slap p {
             font-size: 1rem;
         }
     }
 </style>
+
 <div class='slap'>
     <h1 id='ab'>About</h1>
     {% for abouts in about %}
     <div class='about'>
-        {% if abouts.image%}
-        <img src="{{abouts.image.url}}"/>
+        {% if abouts.image %}
+        <img src="{{abouts.image.url}}" alt="{{abouts.title}}"/>
         {% endif %}
         <h1>{{abouts.title}}</h1>
         <p>{{abouts.body}}</p>
@@ -83,4 +170,5 @@
     <h1> no about information</h1>
     {% endfor %}
 </div>
+
 {% endblock %}

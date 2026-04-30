@@ -1,763 +1,540 @@
-{% extends 'base.html'%}
 
-{% block content%}
+{% extends 'base.html' %}
+
+{% block content %}
 <style>
-    #slide{
+    /* ===== RESET & GLOBAL ===== */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* ===== SLIDE / HERO SECTION ===== */
+    #slide {
         width: 100%;
         height: 12vh;
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-top: 1rem;
     }
 
-    #slide .anime h1{
-        font-size: 3rem;
+    #slide .anime h1 {
+        font-size: 2.8rem;
         color: white;
-      
-        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        text-shadow: none;
+        letter-spacing: -0.02em;
+        font-weight: 600;
     }
 
-    @keyframes racks{
-        0%{
-             border-radius:  50% 50% 50% 50%;
-
-        }
-        25%{
-            {% comment %} opacity: 0;
-            scale: 0; {% endcomment %}
-            border-radius: .5rem 50% 50% .5rem;
-        }
-        35%{
-            {% comment %} opacity: 1;
-            scale: 1; {% endcomment %}
-            {% comment %} color: black; {% endcomment %}
-             border-radius: 50% 50% 50% .5rem;
-        }45%{
-            {% comment %} opacity: 0;
-            scale: 0; {% endcomment %}
-             border-radius: 50% 50% 0 0;
-        }55%{
-            {% comment %} opacity: 1;
-            scale: 1; {% endcomment %}
-            {% comment %} color: #FFF7ED; {% endcomment %}
-             border-radius: 0 0 50% 50%;
-        }65%{
-            {% comment %} opacity: 1;
-            scale: 1; {% endcomment %}
-            {% comment %} color: #FFF7ED; {% endcomment %}
-             border-radius: 5rem 0 2rem 2rem;
-        }75%{
-            {% comment %} opacity: 1;
-            scale: 1; {% endcomment %}
-            {% comment %} color: #FFF7ED; {% endcomment %}
-             border-radius: 0 50% 2rem 2rem;
-        }85%{
-            {% comment %} opacity: 1;
-            scale: 1; {% endcomment %}
-            {% comment %} color: #FFF7ED; {% endcomment %}
-             border-radius: 50% 0 2rem 2rem;
-        }95%{
-            {% comment %} opacity: 1;
-            scale: 1; {% endcomment %}
-            {% comment %} color: #FFF7ED; {% endcomment %}
-             border-radius: 50% 0 50% 2rem;
-        }100%{
-            {% comment %} opacity: 1;
-            scale: 1; {% endcomment %}
-            {% comment %} color: #FFF7ED; {% endcomment %}
-             border-radius: 4rem 0 2rem 50%;
-        }
+    @keyframes racks {
+        0% { border-radius: 50% 50% 50% 50%; }
+        25% { border-radius: 0.75rem 50% 50% 0.75rem; }
+        35% { border-radius: 50% 50% 50% 0.75rem; }
+        45% { border-radius: 50% 50% 0 0; }
+        55% { border-radius: 0 0 50% 50%; }
+        65% { border-radius: 3rem 0 1.5rem 1.5rem; }
+        75% { border-radius: 0 50% 1.5rem 1.5rem; }
+        85% { border-radius: 50% 0 1.5rem 1.5rem; }
+        95% { border-radius: 50% 0 50% 1.5rem; }
+        100% { border-radius: 2.5rem 0 1.5rem 50%; }
     }
 
-    #slide .anime{
-        width: 30%;
-        background: red;
-        height: 100%;
-        padding: 1rem;
-        border-radius: 2rem;
+    #slide .anime {
+        width: auto;
+        min-width: 240px;
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
+        height: 70%;
+        padding: 0.8rem 2rem;
+        border-radius: 3rem;
         display: flex;
         justify-content: center;
         align-items: center;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+        box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.2);
     }
 
-    .wrapper{
+    /* ===== WRAPPER (HERO + PROFILE) ===== */
+    .wrapper {
         width: 100%;
-        height:75vh;
+        min-height: 70vh;
         display: flex;
-
+        gap: 2rem;
+        align-items: center;
+        margin: 2rem 0 1rem;
     }
 
-    .left{
+    .left {
         width: 60%;
-        padding: 1rem;
+        padding: 2rem;
         height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        padding: 1rem;
-        overflow: hidden;
-
+        background: #ffffff;
+        border-radius: 2rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+        transition: all 0.2s;
     }
 
-     .right{
+    .right {
         width: 40%;
         padding: 1rem;
         height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 1rem;
-        {% comment %} background: green; {% endcomment %}
-           
     }
 
     .right img {
-        width: 50%;
-        height: 50%;
+        width: 280px;
+        height: 280px;
         border-radius: 50%;
-        box-shadow: 0 4px 14px rgba(255, 0, 0, 0.5);
-        border: 4px solid red;
-        object-fit: center;
-        animation: racks 20s infinite linear; 
-    }
-
-    .left h1,p{
-        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-    }
-
-    .left h1{
-        font-size: 3rem;
-    }
-    .left p{
-        font-size: 1.3rem;
-    }
-
-    .left p{
-        text-align: center;
-    }
-
-    .staflo{
-        width: 100%;
-        height: auto;
-        display: flex;
-        {% comment %} justify-content: space-between; {% endcomment %}
-        align-items: center;
-        gap: 4rem;
-        flex-wrap: wrap;
-    }
-
-    .stack{
-        width: 30%;
-        height: 30vh;
-        padding: 1rem;
-        border-radius: .5rem;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        margin-top: 1rem;
-        gap: 2rem;
-        transition: 1s ease;
-    }
-
-    .stack:hover{
-        {% comment %} transform: scale(1.1); {% endcomment %}
-         box-shadow: 0 4px 14px rgba(250, 4, 4, 0.5);
-    }
-
-    .stack img{
-        width: 100%;
-        height: 75%;
-        border-radius: .5rem;
-        border: 2px solid red;
+        box-shadow: 0 20px 35px -10px rgba(220, 38, 38, 0.35);
+        border: 4px solid #dc2626;
         object-fit: cover;
+        object-position: center;
+        animation: racks 20s infinite ease-in-out;
+        transition: transform 0.3s;
     }
-    .proj{
-        width: 100%;
-        height: 75vh;
-        display: flex;
-        {% comment %} justify-content: space-between; {% endcomment %}
-        align-items: center;
-        gap: 4rem;
-        margin-top: 1rem;
-        {% comment %} background: green; {% endcomment %}
+    .right img:hover {
+        transform: scale(1.02);
     }
 
-    .wrap{
-        width: 30%;
-        height: 80%;
-        padding: 1rem;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        border-radius: .5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        text-align: center;
-
-
-    }
-
-    .wrap img{
-        width: 100%;
-        height: 50%;
-        border: 2px solid red;
-        border-radius: .5rem;
-        object-fit: center;
-    }
-
-    
-
-    .wrap a:hover{
-        transform: translatey(-8px);
-    }
-
-    .proj h1{
-        width: 100%;
+    .left h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(to right, #b91c1c, #f97316);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        text-shadow: none;
+        margin-bottom: 1rem;
         text-align: center;
     }
 
-    .move a{
-        width: 20%;
-        height: 50%;
+    .left p {
+        font-size: 1.1rem;
+        line-height: 1.5;
+        color: #334155;
+        text-align: center;
+        text-shadow: none;
+        max-width: 90%;
+    }
+
+    /* ===== ROUND HEADINGS (section titles) ===== */
+    .round {
+        width: 100%;
+        min-height: 10vh;
         display: flex;
-        text-decoration: none;
         justify-content: center;
         align-items: center;
-        border-radius: .5rem;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        background: red;
+        margin: 3rem 0 1rem;
+    }
+
+    .head, .stl {
+        background: #dc2626;
         color: white;
-        transition: 1s ease;
-        cursor: pointer;
-        font-size: .7rem;
-
+        padding: 0.6rem 2rem;
+        border-radius: 3rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: -0.3px;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+        display: inline-block;
     }
 
-     .wrap a{
-        width: 100%;
-        height: 5vh;
-        display: flex;
-        text-decoration: none;
-        justify-content: center;
-        align-items: center;
-        border-radius: .5rem;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        background: red;
-        color: white;
-        transition: 1s ease;
-        cursor: pointer;
-        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
-
-    }
-
-
-    .move a:hover{
-        transform: scale(1.1);
-    }
-
-    .move{
-        width: 100%;
-        height: 6vh;
-        display: flex;
-        justify-content: center;
-        margin-bottom: 2rem;
-    }
-
-    .round{
-        width: 100%;
-        height: 20vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        {% comment %} background: yellow; {% endcomment %}
-         margin-top: 3rem;
-        padding-top: 4rem;
-    }
-
-    .head{
-        width: 30%;
-        height: 35%;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        background: red;
-        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        border-radius: 1rem;
-         display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        padding: 1rem;
-        
-    }
-
-    .cover{
+    .ril {
         width: 100%;
         display: flex;
         justify-content: center;
+        margin: 2rem 0 0.5rem;
     }
 
-
-    .wrap h1{
-        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
-    }
-
-    .stl{
-        width: 30%;
-        height: 35%;
-        border-radius: 1rem;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        background: red;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-    }
-
-    .ril{
+    /* ===== PROJECTS SECTION ===== */
+    .proj {
         width: 100%;
-        height: 20vh;
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
-        margin-top: 3rem;
-        padding-top: 4rem;
-        {% comment %} background: yellow; {% endcomment %}
+        gap: 2rem;
+        margin: 2rem 0 1rem;
     }
 
-    .cv{
-        width:100%;
-        height: 20vh;
-        padding: 3rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        {% comment %} background: yellow; {% endcomment %}
-    }
-
-    .cv a{
-        width: 10%;
-        height: 40%;
-        border-radius: .5rem;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        background: red;
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-decoration: none;
-        font-size: .7rem;
-        padding: 1rem;
-    }
-
-    @media  (max-width: 768px){
-        .wrapper{
-            flex-direction: column;
-            height: auto;
-        }
-
-        .left{
-            width: 100%;
-            {% comment %} background: yellow; {% endcomment %}
-            height: auto;
-            order: 2;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .left h1{
-            font-size: 1.5rem;
-             overflow-wrap: break-word;
-        word-wrap: break-word;
-
-        }
-
-        .left p{
-            font-size: .6rem;
-             overflow-wrap: break-word;
-        word-wrap: break-word;
-        }
-
-        .right{
-            width: 100%;
-            order: 1;
-            height: auto;
-        }
-
-        #slide .anime h1{
-            font-size: 1rem;
-        }
-
-        #slide .anime{
-            width: 50%;
-        }
-
-        {% comment %} .head{
-            width: 50%;
-            height: 6vh;
-            font-size: 1rem;
-        } {% endcomment %}
-
-
-
-    .round{
-        width: 100%;
-        height: 5vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 2rem;
-        {% comment %} background: yellow; {% endcomment %}
-    }
-
-    .head{
-        width: 50%;
-        height: 100%;
+    .wrap {
+        width: 300px;
+        background: white;
+        border-radius: 1.5rem;
         padding: 1.2rem;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        background: red;
-        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        border-radius: 1rem;
-         display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        margin-bottom: 3rem;
-        font-size: 1rem;
-
-        
-    }
-
-        {% comment %} .round{
-            padding: 1rem;
-            height: 6vh;
-        } {% endcomment %}
-
-        .proj{
-            flex-direction: column;
-            height: auto;
-        }
-
-        .wrap{
-            width: 100%;
-            height: auto;
-            padding: 1rem;
-            gap: 1rem;
-        }
-
-        .move{
-            margin-top: 2rem;
-        }
-
-        .stl{
-            width: 50%;
-            font-size: 1rem;
-        }
-
-        .staflo{
-            flex-direction: column;
-        }
-
-        .stack{
-            width: 100%;
-        }
-
-        .cv a{
-            width: 50%;
-          
-        } 
-
-         .wrap h1{
-            font-size: 1.2rem;
-
-        }
-
-        .wrap h3{
-            font-size: .7rem;
-
-        }
-
-        .wrap p{
-            font-size: .6rem;
-
-        }
-
-        .stack h1{
-            font-size: 1.2rem;
-        }
-
-    }
-
-
-    @media (min-width: 1201px) and (max-width: 1700px) { 
-
-        .left h1{
-            font-size: 1.5rem;
-             overflow-wrap: break-word;
-        word-wrap: break-word;
-
-        }
-
-        .left p{
-            font-size: 1rem;
-             overflow-wrap: break-word;
-        word-wrap: break-word;
-        }
-
-        #slide .anime h1{
-            font-size: 1rem;
-        }
-
-        #slide .anime{
-            width: 30%;
-        }
-
-        .head{
-            width: 30%;
-            font-size: 1rem;
-            {% comment %} height: 100%; {% endcomment %}
-        }
-
-        {% comment %} .round{
-            padding: 1rem;
-            height: 6vh;
-        } {% endcomment %}
-
-        
-        .wrap{
-            width: 100%;
-            height: auto;
-            padding: 1rem;
-            gap: 1rem;
-        }
-
-         .wrap img{
-        width: 100%;
-        height: 30vh;
-        border: 2px solid red;
-        border-radius: .5rem;
-        object-fit: center;
-    }
-
-        .move{
-            margin-top: 2rem;
-        }
-
-        .stl{
-            width: 30%;
-            font-size: 1rem;
-        }
-
-         .staflo,#v{
-            display: flex;
-            flex-direction: row;
-            gap: 7rem;
-        } 
-
-        {% comment %} .stack{
-            width: 100%;
-        } {% endcomment %}
-
-        .cv a{
-            width: 30%;
-        }
-
-         .wrap h1{
-            font-size: 1.2rem;
-
-        }
-
-        .wrap h3{
-            font-size: .7rem;
-
-        }
-
-        .wrap p{
-            font-size: .6rem;
-
-        }
-
-        .stack h1{
-            font-size: 1.2rem;
-        }
-
-        .stack{
-            width: 27%;
-        }
-    }
-
-    @media (min-width: 769px) and (max-width: 1200px) { 
-
-       .wrapper{
+        box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.08);
+        transition: all 0.25s ease;
+        display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: auto;
-       }
+        text-align: center;
+        border: 1px solid #f0f0f0;
+    }
+    .wrap:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 24px 38px -12px rgba(0, 0, 0, 0.15);
+    }
 
-        .left{
-            width:65%;
-            order: 2;
-            justify-content: flex-start;
-             height: auto;
-        }
-
-        .right{
-            width:65%;
-            height: auto;
-            order: 1;
-           
-           
-        } 
-
-        .wrapper h1{
-            justify-self: flex-start;
-        }
-
-        .left h1{
-            font-size: 1.5rem;
-             overflow-wrap: break-word;
-        word-wrap: break-word;
-
-        }
-
-        .left p{
-            font-size: .6rem;
-             overflow-wrap: break-word;
-        word-wrap: break-word;
-        }
-
-        #slide .anime h1{
-            font-size: 1rem;
-        }
-
-        #slide .anime{
-            width: 30%;
-        }
-
-        .head{
-            width: 30%;
-            font-size: 1rem;
-            {% comment %} height: 100%; {% endcomment %}
-        }
-
-        {% comment %} .round{
-            padding: 1rem;
-            height: 6vh;
-        } {% endcomment %}
-
-        .proj{
-            flex-direction: column;
-            height: auto;
-            {% comment %} background: red; {% endcomment %}
-        }
-        .wrap{
-            width: 65%;
-            height: auto;
-            padding: 1rem;
-            gap: 1rem;
-        }
-
-         .wrap img{
+    .wrap img {
         width: 100%;
-        height: 30vh;
-        border: 2px solid red;
-        border-radius: .5rem;
-        object-fit: center;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 1rem;
+        border: 2px solid #dc2626;
+        margin-bottom: 0.8rem;
     }
 
-        .move{
-            margin-top: 2rem;
-        }
+    .wrap h1 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin: 0.5rem 0;
+        color: #111;
+        text-shadow: none;
+    }
 
-        .stl{
-            width: 30%;
+    .wrap h3 {
+        font-size: 0.85rem;
+        color: #dc2626;
+        font-weight: 500;
+        margin: 0.3rem 0;
+    }
+
+    .wrap p {
+        font-size: 0.85rem;
+        color: #475569;
+        text-shadow: none;
+        margin: 0.2rem 0;
+    }
+
+    .cover {
+        margin-top: 1rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .wrap a {
+        width: 80%;
+        background: #dc2626;
+        color: white;
+        padding: 0.6rem 0;
+        border-radius: 2rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: 0.2s;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+    }
+    .wrap a:hover {
+        background: #b91c1c;
+        transform: scale(1.02);
+    }
+
+    .move {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 1.8rem 0;
+    }
+    .move a {
+        background: #dc2626;
+        color: white;
+        padding: 0.7rem 2rem;
+        border-radius: 3rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: 0.2s;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .move a:hover {
+        background: #b91c1c;
+        transform: scale(1.03);
+    }
+
+    /* ===== STACKS & FRAMEWORKS GRID ===== */
+    .staflo {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        margin: 1.5rem 0;
+    }
+
+    .stack {
+        width: 240px;
+        background: white;
+        border-radius: 1.5rem;
+        padding: 1rem;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        transition: 0.2s;
+        text-align: center;
+        border: 1px solid #f1f1f1;
+    }
+    .stack:hover {
+        box-shadow: 0 12px 28px rgba(220, 38, 38, 0.2);
+        transform: translateY(-4px);
+    }
+
+    .stack img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-radius: 1rem;
+        border: 2px solid #dc2626;
+        margin-bottom: 0.8rem;
+    }
+
+    .stack h1 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #1e293b;
+        text-shadow: none;
+    }
+
+    /* ===== CV BUTTON ===== */
+    .cv {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 2rem 0 3rem;
+    }
+    .cv a {
+        background: #dc2626;
+        color: white;
+        padding: 0.8rem 2rem;
+        border-radius: 3rem;
+        text-decoration: none;
+        font-weight: 500;
+        transition: 0.2s;
+        font-size: 1rem;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    }
+    .cv a:hover {
+        background: #b91c1c;
+        transform: scale(1.02);
+    }
+
+    /* ===== RESPONSIVE DESIGN (FULL ADAPTIVE) ===== */
+    @media (max-width: 768px) {
+        .wrapper {
+            flex-direction: column;
+            height: auto;
+        }
+        .left {
+            width: 95%;
+            order: 2;
+            padding: 1.5rem;
+        }
+        .left h1 {
+            font-size: 1.8rem;
+        }
+        .left p {
+            font-size: 0.9rem;
+            max-width: 100%;
+        }
+        .right {
+            width: 100%;
+            order: 1;
+        }
+        .right img {
+            width: 200px;
+            height: 200px;
+        }
+        #slide .anime h1 {
+            font-size: 1.4rem;
+        }
+        #slide .anime {
+            width: auto;
+            padding: 0.4rem 1.2rem;
+        }
+        .head, .stl {
+            font-size: 1.2rem;
+            padding: 0.4rem 1.4rem;
+        }
+        .proj {
+            flex-direction: column;
+            align-items: center;
+        }
+        .wrap {
+            width: 90%;
+        }
+        .wrap img {
+            height: 160px;
+        }
+        .staflo {
+            flex-direction: column;
+            align-items: center;
+        }
+        .stack {
+            width: 85%;
+        }
+        .cv a {
+            width: auto;
+            padding: 0.7rem 1.8rem;
+            font-size: 0.9rem;
+        }
+        .move a {
+            font-size: 0.9rem;
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 1200px) {
+        .wrapper {
+            flex-direction: column;
+            align-items: center;
+        }
+        .left {
+            width: 85%;
+            order: 2;
+        }
+        .left h1 {
+            font-size: 2rem;
+        }
+        .left p {
             font-size: 1rem;
         }
-
-         .staflo,#v{
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        } 
-
-         .stack{
-            width: 65%;
-        } 
-
-        .cv a{
-            width: 30%;
+        .right {
+            width: 70%;
+            order: 1;
         }
-
-         .wrap h1{
-            font-size: 1.2rem;
-
+        .right img {
+            width: 240px;
+            height: 240px;
         }
-
-        .wrap h3{
-            font-size: .7rem;
-
+        .proj {
+            justify-content: center;
         }
-
-        .wrap p{
-            font-size: .6rem;
-
+        .wrap {
+            width: 320px;
         }
-
-        .stack h1{
-            font-size: 1.2rem;
+        .staflo {
+            justify-content: center;
+            gap: 1.8rem;
+        }
+        .stack {
+            width: 220px;
+        }
+        .cv a {
+            width: auto;
         }
     }
 
-    
-
+    @media (min-width: 1201px) and (max-width: 1700px) {
+        .left h1 {
+            font-size: 2.2rem;
+        }
+        .left p {
+            font-size: 1rem;
+        }
+        .right img {
+            width: 260px;
+            height: 260px;
+        }
+        .stack {
+            width: 230px;
+        }
+        .wrap {
+            width: 300px;
+        }
+        .wrap img {
+            height: 170px;
+        }
+        .cv a {
+            width: auto;
+            padding: 0.8rem 2.5rem;
+        }
+    }
 </style>
 
-<div id='slide'><div class='anime'><h1>MY PORTFOLIO</h1></div></div>
+<div id='slide'>
+    <div class='anime'>
+        <h1>MY PORTFOLIO</h1>
+    </div>
+</div>
 
-<div class='wrapper'><div class='left'><h1>{{data.title}}</h1><p>{{data.body}}</p></div><div class='right'>{% if data.image %}<img src="{{data.image.url}}"/>{%endif%}</div></div>
+<div class='wrapper'>
+    <div class='left'>
+        <h1>{{data.title}}</h1>
+        <p>{{data.body}}</p>
+    </div>
+    <div class='right'>
+        {% if data.image %}
+            <img src="{{data.image.url}}" alt="{{data.title}}"/>
+        {% endif %}
+    </div>
+</div>
 
-<div class='round'><h1 class='head'>Latest Projects</h1></div>
-<div class='proj'>{% for projs in proj %}<div class='wrap'>{% if projs.image%}<img src="{{projs.image.url}}"/>{%endif%}<h1>{{projs.title}}</h1><h3>Date - Time:</h3><p>{{projs.date}}</p><div class='cover'><a href={% url 'detail' projs.pk%}>view</a></div></div>{%empty%}<h1>No available project ⛔️</h1>{% endfor %}</div>
-{% if count > 0 %}<div class='move'><a href={% url 'projects'%}>see more</a></div>{%endif%}
+<div class='round'>
+    <h1 class='head'>Latest Projects</h1>
+</div>
+
+<div class='proj'>
+    {% for projs in proj %}
+        <div class='wrap'>
+            {% if projs.image %}
+                <img src="{{projs.image.url}}" alt="{{projs.title}}"/>
+            {% endif %}
+            <h1>{{projs.title}}</h1>
+            <h3>Date - Time:</h3>
+            <p>{{projs.date}}</p>
+            <div class='cover'>
+                <a href="{% url 'detail' projs.pk %}">view</a>
+            </div>
+        </div>
+    {% empty %}
+        <h1>No available project ⛔️</h1>
+    {% endfor %}
+</div>
+
+{% if count > 0 %}
+    <div class='move'>
+        <a href="{% url 'projects' %}">see more</a>
+    </div>
+{% endif %}
 
 <div class='ril'>
-<h1 class='stl'>Stacks</h1>
+    <h1 class='stl'>Stacks</h1>
 </div>
+
 <div class='staflo' id='v'>
-    {% for stacks in stack%}
-    <div class='stack'>
-        {% if stacks.image %}
-        <img src="{{stacks.image.url}}" />
-        {% endif%}
-        <h1>{{stacks.name}}</h1>
-    </div>
-    {%empty%}
-    <h1>stack info not available</h1>
-    {%endfor%}
+    {% for stacks in stack %}
+        <div class='stack'>
+            {% if stacks.image %}
+                <img src="{{stacks.image.url}}" alt="{{stacks.name}}"/>
+            {% endif %}
+            <h1>{{stacks.name}}</h1>
+        </div>
+    {% empty %}
+        <h1>stack info not available</h1>
+    {% endfor %}
 </div>
 
 <div class='ril'>
-<h1 class='stl'>Frameworks</h1>
+    <h1 class='stl'>Frameworks</h1>
 </div>
+
 <div class='staflo'>
-    {% for frames in frame%}
-    <div class='stack'>
-        {% if frames.image %}
-        <img src="{{frames.image.url}}" />
-        {% endif%}
-        <h1>{{frames.name}}</h1>
-    </div>
-    {%empty%}
-    <h1>framework info not available</h1>
-    {%endfor%}
+    {% for frames in frame %}
+        <div class='stack'>
+            {% if frames.image %}
+                <img src="{{frames.image.url}}" alt="{{frames.name}}"/>
+            {% endif %}
+            <h1>{{frames.name}}</h1>
+        </div>
+    {% empty %}
+        <h1>framework info not available</h1>
+    {% endfor %}
 </div>
 
 <div class='cv'>
     {% if cv.cv %}
-    <a href={% url 'download' cv.pk%}>Download {{cv.name}}</a>
+        <a href="{% url 'download' cv.pk %}">Download {{cv.name}}</a>
     {% endif %}
 </div>
-{% endblock%}
+
+{% endblock %}

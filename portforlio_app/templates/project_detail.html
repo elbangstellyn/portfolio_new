@@ -1,7 +1,11 @@
-{% extends 'base.html'%}
+
+{% extends 'base.html' %}
 {% block content %}
 <style>
-    .swipe{
+    /* ===== DETAIL PAGE MODERN REDESIGN ===== */
+    /* Preserving all original classes and Django template syntax */
+    
+    .swipe {
         width: 100%;
         height: auto;
         display: flex;
@@ -9,297 +13,404 @@
         justify-content: center;
         align-items: center;
         margin-bottom: 2rem;
-    }
-
-    .swipe img{
-        width: 70%;
-        height: 70vh;
-        object-fit: cover;
-        border-radius: .5rem;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        margin-bottom: 1rem;
-    }
-
-    .swipe h1,p{
-        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
-    }
-
-    .swipe p{
-        text-align: center;
-        max-width: 50%;
-        height: auto;
-        {% comment %} background: red; {% endcomment %}
         padding: 1rem;
-        overflow-wrap: break-word;
-        word-wrap: break-word; 
     }
 
+    .swipe img {
+        width: 80%;
+        max-width: 750px;
+        height: auto;
+        max-height: 500px;
+        object-fit: cover;
+        border-radius: 1.5rem;
+        box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
+        margin-bottom: 1.5rem;
+        transition: transform 0.3s ease;
+        border: 2px solid rgba(220, 38, 38, 0.2);
+    }
+    .swipe img:hover {
+        transform: scale(1.01);
+    }
 
+    .swipe h1 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #1e293b, #b91c1c);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        text-shadow: none;
+        margin: 0.75rem 0;
+        text-align: center;
+    }
 
-    .wind{
-        width: 100%
+    .swipe p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #334155;
+        text-align: center;
+        max-width: 750px;
+        width: 90%;
+        padding: 0.5rem 1rem;
+        text-shadow: none;
+    }
+
+    /* GitHub link button */
+    .swipe a {
+        width: auto;
+        min-width: 160px;
+        padding: 0.75rem 1.5rem;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.75rem;
+        text-decoration: none;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+        color: white;
+        background: #dc2626;
+        border-radius: 3rem;
+        margin: 1.5rem 0;
+        font-weight: 500;
+        transition: all 0.25s ease;
+    }
+    .swipe a:hover {
+        background: #b91c1c;
+        transform: translateY(-3px);
+        box-shadow: 0 12px 24px rgba(220, 38, 38, 0.3);
+    }
+    .swipe a svg {
+        transition: transform 0.2s;
+    }
+    .swipe a:hover svg {
+        transform: scale(1.05);
+    }
+
+    /* Comments section */
+    .blow {
+        width: 100%;
         height: auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        background: red;
         align-items: center;
-        color: white;
-         text-shadow: 0 4px 14px rgba(0,0,0,0.5);
-         border-radius: .5rem .5rem 0 0;
-         box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-         margin-bottom: 1rem;
+        margin-top: 1rem;
     }
 
-    .comment{
+    .comment {
         width: 70%;
+        max-width: 850px;
         height: auto;
-        margin: 3.5rem 0;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        border-radius: .5rem;
-        padding: 0 0 1rem 0;
-    } 
-    .comment h1,h3,p{
-        padding: 0 1rem;
+        margin: 2rem 0;
+        box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.08);
+        border-radius: 1.5rem;
+        background: #ffffff;
+        overflow: hidden;
+        border: 1px solid #f0f0f0;
+    }
+
+    .wind {
+        width: 100%;
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
+        color: white;
+        text-shadow: none;
+        border-radius: 1.5rem 1.5rem 0 0;
+        box-shadow: none;
+        margin-bottom: 0;
+        padding: 1rem 1.5rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+        letter-spacing: -0.2px;
+    }
+
+    .comment h3 {
+        padding: 0.75rem 1.5rem 0.25rem;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #1e293b;
         overflow-wrap: break-word;
         word-wrap: break-word;
     }
+    .comment p {
+        padding: 0.1rem 1.5rem 0.5rem;
+        font-size: 0.95rem;
+        color: #475569;
+        line-height: 1.5;
+        text-align: left;
+        text-shadow: none;
+    }
+    .comment p:last-of-type {
+        font-size: 0.75rem;
+        color: #94a3b8;
+        border-bottom: 1px solid #f1f5f9;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.75rem;
+    }
+    .comment h1:only-child {
+        padding: 2rem;
+        text-align: center;
+        color: #94a3b8;
+        font-size: 1.2rem;
+    }
 
-
-
+    /* Comment Form */
     .form-holder {
-
         width: 100%;
         height: auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
+        margin-top: 0.5rem;
     }
 
-    form{
+    form {
         width: 70%;
+        max-width: 850px;
         height: auto;
         display: flex;
         flex-direction: column;
-        {% comment %} justify-content: center;
-        align-items: center; {% endcomment %}
-        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        border-radius: .5rem;
-        padding: 0 0 1rem 0;
-
+        background: #ffffff;
+        box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.08);
+        border-radius: 1.5rem;
+        overflow: hidden;
+        border: 1px solid #f0f0f0;
+        margin-bottom: 1rem;
     }
 
-    form p{
+    form h1 {
         width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1rem;
-
-    }
-
-    form p input,textarea{
-        border-radius: .5rem;
-        border: 2px solid red;
-        padding: 1rem;
-    }
-
-     {% comment %} form p input,textarea:focus{
-        border: 2px solid darkred;
-     } {% endcomment %}
-
-    form h1{
-        width: 100%
-        height: 5vh;
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
         color: white;
-        border-radius: .5rem .5rem 0 0;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        background: red;
-         text-shadow: 0 4px 14px rgba(0,0,0,0.5);
-         display: flex;
-         justify-content: center;
-    }
-
-    .blow{
-         width: 100%
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        {% comment %} background: red; {% endcomment %}
-        align-items: center;
-
-    }
-
-    form button{
-        width: 70%;
-        padding: 1rem;
-        color: white;
-        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        background: red;
-         box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-         border-radius: .5rem;
-         border: none;
-         cursor: pointer;
-
-
-    }
-
-    .btn-hold{
-        width: 100%;
+        text-shadow: none;
         display: flex;
         justify-content: center;
         padding: 1rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin: 0;
     }
 
-    .option{
+    form p {
+        width: 100%;
         display: flex;
-        width: 50%;
-        justify-content: space-between;
-        margin: 3rem 0;
-        border: 2px solid red;
+        flex-direction: column;
+        gap: 0.6rem;
+        padding: 1.2rem 1.8rem;
+        margin: 0;
+    }
+
+    form p input,
+    form p textarea {
         border-radius: 1rem;
+        border: 1.5px solid #e2e8f0;
+        padding: 0.85rem 1rem;
+        font-family: inherit;
+        font-size: 0.95rem;
+        transition: all 0.2s;
+        background: #fefefe;
+    }
+    form p input:focus,
+    form p textarea:focus {
+        outline: none;
+        border-color: #dc2626;
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
     }
 
-    .option > *{
-        text-decoration: none;
-        color: black;
-    }
-
-    .option a,.a2{
-         padding: 1rem;
-         width: 50%;
-         height: 100%;
-         display: flex;
-         flex-direction: column;
-         justify-content: center;
-         align-items: center;
-    }
-
-    .option .a2{
-        border-left: 2px solid red;
-    }
-
-    .option a:hover{
-        background: red;
-        border-radius: .6rem 0 0 .6rem; 
-        color: white;
-    }
-
-    .option .a2:hover{
-        background: red;
-        border-radius: 0 .6rem .6rem 0; 
-        color: white;
-    }
-
-    .swipe a{
-        width: 30%;
-        height: auto;
-        padding: .6rem;
+    .btn-hold {
+        width: 100%;
         display: flex;
         justify-content: center;
-        align-items: center;
-        text-decoration: none;
-        box-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        color: white;
-        text-shadow: 0 4px 14px rgba(0,0,0,0.5);
-        background: red;
-        border-radius: .5rem;
-        margin: 2rem 0;
-        gap: .5rem;
+        padding: 0rem 1.8rem 1.8rem 1.8rem;
     }
 
-     @media (max-width: 768px){
-        .swipe img{
-            width: 100%;
-            height: auto;
-        }
+    form button {
+        width: auto;
+        min-width: 140px;
+        padding: 0.85rem 2rem;
+        color: white;
+        background: #dc2626;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 3rem;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.25s ease;
+    }
+    form button:hover {
+        background: #b91c1c;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(220, 38, 38, 0.25);
+    }
 
-        .swipe p{
+    /* Navigation options (Home / More Projects) */
+    .option {
+        display: flex;
+        width: auto;
+        justify-content: center;
+        gap: 0;
+        margin: 2.5rem auto;
+        border-radius: 3rem;
+        background: #ffffff;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e2e8f0;
+        overflow: hidden;
+    }
+
+    .option > a,
+    .option .a2 {
+        text-decoration: none;
+        padding: 0.8rem 2rem;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        text-align: center;
+        background: white;
+        color: #1e293b;
+        width: 100%;
+    }
+
+    .option a:first-child {
+        border-right: 1px solid #e2e8f0;
+    }
+
+    .option a:hover,
+    .option .a2:hover {
+        background: #dc2626;
+        color: white;
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (max-width: 768px) {
+        .swipe img {
+            width: 95%;
+            border-radius: 1rem;
+        }
+        .swipe h1 {
+            font-size: 1.6rem;
+            text-align: center;
+        }
+        .swipe p {
+            font-size: 0.9rem;
+            width: 95%;
             max-width: 100%;
         }
-
-        .swipe a{
-            font-size: .6rem;
+        .swipe a {
+            font-size: 0.85rem;
+            min-width: 140px;
+            padding: 0.6rem 1.2rem;
         }
-
-        .comment{
-            width: 100%;
+        .comment {
+            width: 95%;
         }
-
-        form{
-            width: 100%;
+        .wind {
+            font-size: 1.1rem;
+            padding: 0.75rem 1rem;
         }
-
-        .option{
-            width: 50%;
+        .comment h3 {
+            font-size: 0.9rem;
+            padding: 0.6rem 1rem 0.2rem;
         }
-
-        .comment h3,p{
-            font-size: .6rem;
+        .comment p {
+            font-size: 0.8rem;
+            padding: 0.1rem 1rem 0.5rem;
         }
-
-        .comment h1{
-            font-size: 1.2rem;
+        form {
+            width: 95%;
         }
-
-        form h1{
-            font-size: 1.2rem;
+        form p {
+            padding: 1rem 1.2rem;
         }
-
-        .option a{
-            font-size: .6rem;
+        form h1 {
+            font-size: 1.1rem;
+            padding: 0.85rem;
         }
-
-        .option > *{
-            font-size: .6rem;
+        .option {
+            width: auto;
+            margin: 1.5rem auto;
         }
-
-        .option{
-            width: 60%;
+        .option > a,
+        .option .a2 {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.8rem;
         }
+    }
 
-        .swipe h1{
-            text-align: center;
+    @media (min-width: 769px) and (max-width: 1200px) {
+        .swipe img {
+            width: 85%;
+        }
+        .comment {
+            width: 85%;
+        }
+        form {
+            width: 85%;
+        }
+        .swipe h1 {
+            font-size: 1.9rem;
+        }
+        .swipe p {
+            font-size: 1rem;
+            max-width: 85%;
+        }
+    }
+
+    @media (min-width: 1201px) and (max-width: 1700px) {
+        .swipe img {
+            width: 70%;
+            max-height: 550px;
+        }
+        .comment {
+            width: 65%;
+        }
+        form {
+            width: 65%;
         }
     }
 </style>
-<div class='swipe'><img src="{{one_view.image.url}}"/>
-<h1>{{one_view.title}}</h1>
-<p>{{one_view.body}}</p>
-{% if one_view.link %}
-<a href={{one_view.link}} target='_blank'>    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" width="24" height="24" fill="currentColor">
-  <path d="M165.9 397.4c0 2-2.3 3.7-5.2 3.7-3.3.3-5.6-1.3-5.6-3.7 0-2 2.3-3.7 5.2-3.7 3-.3 5.6 1.3 5.6 3.7zM248 8C111 8 0 119 0 256c0 110.5 69.8 204.8 166.5 238.2 12.2 2.2 16.7-5.2 16.7-11.8 0-5.9-.2-25.6-.2-46.4-67.7 14.8-82-29.2-82-29.2-11.1-28.2-27.1-35.7-27.1-35.7-22.2-15.2 1.7-14.9 1.7-14.9 24.6 1.7 37.5 25.2 37.5 25.2 21.9 37.5 57.5 26.7 71.5 20.4 2.2-15.9 8.6-26.7 15.6-32.8-54-6.1-110.8-27-110.8-120.2 0-26.6 9.5-48.4 25.1-65.4-2.5-6.2-10.9-31.1 2.4-64.9 0 0 20.5-6.6 67.1 25 19.5-5.4 40.4-8.1 61.2-8.2 20.8.1 41.7 2.8 61.2 8.2 46.6-31.6 67.1-25 67.1-25 13.3 33.8 4.9 58.7 2.4 64.9 15.6 17 25.1 38.8 25.1 65.4 0 93.4-56.9 114-111 120 8.9 7.7 16.8 22.8 16.8 46 0 33.2-.3 59.9-.3 68.1 0 6.6 4.4 14.2 16.8 11.8C426.2 460.8 496 366.5 496 256 496 119 385 8 248 8z"/>
-</svg> Github</a>
-{% endif %}
+
+<div class='swipe'>
+    {% if one_view.image %}
+        <img src="{{one_view.image.url}}" alt="{{one_view.title}}"/>
+    {% endif %}
+    <h1>{{one_view.title}}</h1>
+    <p>{{one_view.body}}</p>
+    {% if one_view.link %}
+        <a href="{{one_view.link}}" target='_blank'>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" width="20" height="20" fill="currentColor">
+                <path d="M165.9 397.4c0 2-2.3 3.7-5.2 3.7-3.3.3-5.6-1.3-5.6-3.7 0-2 2.3-3.7 5.2-3.7 3-.3 5.6 1.3 5.6 3.7zM248 8C111 8 0 119 0 256c0 110.5 69.8 204.8 166.5 238.2 12.2 2.2 16.7-5.2 16.7-11.8 0-5.9-.2-25.6-.2-46.4-67.7 14.8-82-29.2-82-29.2-11.1-28.2-27.1-35.7-27.1-35.7-22.2-15.2 1.7-14.9 1.7-14.9 24.6 1.7 37.5 25.2 37.5 25.2 21.9 37.5 57.5 26.7 71.5 20.4 2.2-15.9 8.6-26.7 15.6-32.8-54-6.1-110.8-27-110.8-120.2 0-26.6 9.5-48.4 25.1-65.4-2.5-6.2-10.9-31.1 2.4-64.9 0 0 20.5-6.6 67.1 25 19.5-5.4 40.4-8.1 61.2-8.2 20.8.1 41.7 2.8 61.2 8.2 46.6-31.6 67.1-25 67.1-25 13.3 33.8 4.9 58.7 2.4 64.9 15.6 17 25.1 38.8 25.1 65.4 0 93.4-56.9 114-111 120 8.9 7.7 16.8 22.8 16.8 46 0 33.2-.3 59.9-.3 68.1 0 6.6 4.4 14.2 16.8 11.8C426.2 460.8 496 366.5 496 256 496 119 385 8 248 8z"/>
+            </svg> 
+            Github
+        </a>
+    {% endif %}
 </div>
 
 <div class='blow'>
-<div class='comment'>
-    <h1 class='wind'>Comments</h1>
-    {% for comments in comment%}
-    <h3>{{comments.name}}</h3>
-    <p>{{comments.comment}}</p>
-    <p>{{comments.date}}</p>
-    {%empty%}
-    <h1>no comment</h1>
-    {%endfor%}
-</div>
-</div>
-<div class='form-holder'>
-<form method='post' action={% url 'detail' one_view.pk%}>{% csrf_token%}
-    <h1> Add Comment</h1>
-    {{form.as_p}}
-    <div class='btn-hold'>
-    <button type='submit'>Comment</button>
+    <div class='comment'>
+        <h1 class='wind'>Comments</h1>
+        {% for comments in comment %}
+            <h3>{{comments.name}}</h3>
+            <p>{{comments.comment}}</p>
+            <p>{{comments.date}}</p>
+        {% empty %}
+            <h1 style="padding: 1rem;">No comments yet. Be the first to share your thoughts.</h1>
+        {% endfor %}
     </div>
-</form>
+</div>
+
+<div class='form-holder'>
+    <form method='post' action="{% url 'detail' one_view.pk %}">
+        {% csrf_token %}
+        <h1>Add Comment</h1>
+        {{form.as_p}}
+        <div class='btn-hold'>
+            <button type='submit'>Post Comment</button>
+        </div>
+    </form>
 </div>
 
 <div class='option'>
-    <a href={% url 'home'%}>Home</a>
-    <a href={% url 'projects'%} class='a2'>More Projects</a>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'projects' %}" class='a2'>More Projects</a>
 </div>
+
 {% endblock %}
